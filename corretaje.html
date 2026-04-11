@@ -3,37 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CNC Propiedades - Corretaje Técnico</title>
+    <title>Corretaje - CNC Propiedades</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <img src="img/logo.png" alt="Logo CNC Construcciones" class="logo-img">
+        <img src="img/logo.png" alt="Logo CNC" class="logo-img">
         <nav><a href="index.html">← Volver al Inicio</a></nav>
         <h1>CNC PROPIEDADES</h1>
-        <p>"NO SOLO VENDEMOS, TAMBIÉN SABEMOS"</p>
+        <p>"No solo vendemos, también sabemos"</p>
     </header>
 
     <main>
         <div class="item">
             <span class="estado disponible">Disponible</span>
-            <h2>Casa en Quilpué - Sector Los Pinos</h2>
-            <p>Propiedad revisada técnicamente. Estructura sólida y sin filtraciones. Lista para habitar.</p>
-        </div>
+            <h2>Terreno en Villa Alemana</h2>
+            
+            <div class="propiedad-info">
+                <p><strong>Superficie total:</strong> 2.100 m²</p>
+                <p><strong>Precio:</strong> 250.000.000 CLP | 6.289 UF</p>
+            </div>
 
-        <div class="item">
-            <span class="estado vendido">Vendido</span>
-            <h2>Terreno en Limache</h2>
-            <p>5000 m2 con factibilidad de agua y luz. Terreno nivelado con maquinaria propia.</p>
+            <div class="galeria-fotos">
+                <div class="foto-contenedor">
+                    <img src="img/mapa.png" alt="Mapa del terreno" class="thumb" onclick="openModal(0)">
+                </div>
+                <div class="foto-contenedor">
+                    <img src="img/esquina.png" alt="Vista de esquina" class="thumb" onclick="openModal(1)">
+                </div>
+            </div>
+
+            <p class="contacto-texto">Para mayor información escribe a WhatsApp y/o correo. Estaremos felices de ayudarte.</p>
+            
+            <div class="botones-contacto">
+                <a href="https://wa.me/56982559972?text=Buen%20día.%20Me%20interesa%20el%20terreno%20de%202.100m2%20en%20Villa%20Alemana." target="_blank" class="contact-btn">Consultar por WhatsApp</a>
+                <a href="mailto:gmoraloper@gmail.com" class="contact-btn email-btn">Enviar Correo</a>
+            </div>
         </div>
     </main>
 
-    <footer>
-        <p>&copy; <span id="year"></span> CNC Construcciones - Quilpué, Chile</p>
-    </footer>
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="imgFull">
+        
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
+    </div>
+
+    <footer><p>&copy; CNC Construcciones - Quilpué, Chile</p></footer>
 
     <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
+        // Lista de imágenes de la galería
+        const images = ["img/mapa.png", "img/esquina.png"];
+        let currentImageIndex = 0;
+
+        function openModal(index) {
+            currentImageIndex = index;
+            document.getElementById("myModal").style.display = "flex"; // Usar flex para centrar
+            updateModalImage();
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            // Navegación cíclica (vuelve al inicio o al final)
+            if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            }
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            }
+            
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            document.getElementById("imgFull").src = images[currentImageIndex];
+        }
+
+        // Cerrar al hacer clic fuera de la imagen (en el fondo oscuro)
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
     </script>
 </body>
 </html>
