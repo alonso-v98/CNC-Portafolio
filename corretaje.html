@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNC Propiedades - Corretaje Técnico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Logo CNC Construcciones" class="logo-img">
+        <nav><a href="index.html">← Volver al Inicio</a></nav>
+        <h1>CNC PROPIEDADES</h1>
+        <p>"NO SOLO VENDEMOS, TAMBIÉN SABEMOS"</p>
+    </header>
+
+    <main>
+        <div class="item">
+            <span class="estado disponible">Disponible</span>
+            <h2>Casa en Quilpué - Sector Los Pinos</h2>
+            <p>Propiedad revisada técnicamente. Estructura sólida y sin filtraciones. Lista para habitar.</p>
+        </div>
+
+        <div class="item">
+            <span class="estado vendido">Vendido</span>
+            <h2>Terreno en Limache</h2>
+            <p>5000 m2 con factibilidad de agua y luz. Terreno nivelado con maquinaria propia.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> CNC Construcciones - Quilpué, Chile</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
