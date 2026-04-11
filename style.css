@@ -1,0 +1,208 @@
+/* 1. RESET Y BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 2. HEADER Y LOGO */
+header {
+    background: #1a1a1a;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 5px solid #ffcc00;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-img {
+    max-width: 220px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+}
+
+header p {
+    color: #ffcc00;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav {
+    text-align: center;
+    padding: 20px;
+}
+
+nav a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* 3. PÁGINA DE INICIO (Panel de 4 Tarjetas) */
+.panel-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+}
+
+.card-link {
+    text-decoration: none;
+    display: flex;
+    flex: 1;
+    min-width: 280px;
+    max-width: 320px;
+}
+
+.card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    padding: 40px 30px;
+    width: 100%;
+    text-align: center;
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 380px;
+    border-radius: 4px;
+}
+
+.card:hover {
+    border-color: #ffcc00;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.card h2 {
+    color: #ffcc00;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.card p {
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+
+/* 4. BOTONES DE CONTACTO */
+.contact-card {
+    border: 2px solid #ffcc00;
+}
+
+.contact-btn {
+    display: block;
+    background: #28a745;
+    color: white !important;
+    text-decoration: none;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+.email-btn {
+    background: #333;
+    border: 1px solid #ffcc00;
+}
+
+.email-btn:hover {
+    background: #ffcc00;
+    color: #000 !important;
+}
+
+/* 5. PÁGINAS INTERNAS (Construcción, Corretaje, Nosotros) */
+main:not(.panel-container) {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+.item {
+    background: #1e1e1e;
+    margin-bottom: 30px;
+    padding: 40px;
+    border-left: 6px solid #ffcc00;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item h2, .item h3 {
+    color: #ffcc00;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* ESTADOS DE CORRETAJE */
+.estado {
+    display: inline-block;
+    padding: 6px 15px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.disponible {
+    background-color: #28a745 !important; /* Verde */
+    color: #ffffff !important;
+}
+
+.vendido {
+    background-color: #dc3545 !important; /* Rojo */
+    color: #ffffff !important;
+}
+
+/* 6. FOOTER */
+footer {
+    margin-top: auto;
+    padding: 40px;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #222;
+}
+
+/* 7. RESPONSIVE */
+@media (max-width: 768px) {
+    header h1 { font-size: 2rem; }
+    .card-link { max-width: 100%; }
+}
