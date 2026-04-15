@@ -29,12 +29,12 @@
 
                 <div class="galeria-fotos" style="display: flex; gap: 10px; margin-bottom: 25px;">
                     <div class="foto-contenedor" style="width: 150px; height: 110px; cursor: pointer; border: 1px solid #333; overflow: hidden; border-radius: 2px;">
-                        <img src="img/mapa.png" alt="Mapa del terreno" class="thumb" onclick="openModal(0)">
+                        <img src="img/mapa.png" alt="Mapa del terreno" class="thumb" onclick="openModal(['img/mapa.png', 'img/esquina.png'], 0)">
                     </div>
                     <div class="foto-contenedor" style="width: 150px; height: 110px; cursor: pointer; border: 1px solid #333; overflow: hidden; border-radius: 2px;">
-                        <img src="img/esquina.png" alt="Vista de esquina" class="thumb" onclick="openModal(1)">
+                        <img src="img/esquina.png" alt="Vista de esquina" class="thumb" onclick="openModal(['img/mapa.png', 'img/esquina.png'], 1)">
                     </div>
-                    </div>
+                </div>
 
                 <p style="margin-top: 20px; font-size: 0.9rem; color: #888; font-style: italic;">Para mayor información escribe a WhatsApp y/o correo. Estaremos felices de ayudarte.</p>
                 
@@ -44,12 +44,45 @@
                 </div>
             </div>
         </div>
+
+        <div class="item" style="margin-top: 40px;">
+            <div class="perfil-texto">
+                <div style="margin-bottom: 10px;">
+                    <span style="background: #155d27; color: #fff; padding: 5px 12px; border-radius: 2px; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">Disponible</span>
+                </div>
+                
+                <h2>Potencial Inmobiliario - Quilpué Centro</h2>
+                
+                <div class="propiedad-info" style="margin-bottom: 20px; border-left: 2px solid #d4af37; padding-left: 15px;">
+                    <p><strong>Superficie total:</strong> 800 m²</p>
+                    <p><strong>Precio:</strong> 380.000.000 CLP</p>
+                </div>
+
+                <div class="galeria-fotos" style="display: flex; gap: 10px; margin-bottom: 25px;">
+                    <div class="foto-contenedor" style="width: 150px; height: 110px; cursor: pointer; border: 1px solid #333; overflow: hidden; border-radius: 2px;">
+                        <img src="img/frontis.png" alt="Frontis Terreno" class="thumb" onclick="openModal(['img/frontis.png', 'img/maps.png', 'img/zoom.png'], 0)">
+                    </div>
+                    <div class="foto-contenedor" style="width: 150px; height: 110px; cursor: pointer; border: 1px solid #333; overflow: hidden; border-radius: 2px;">
+                        <img src="img/maps.png" alt="Ubicación" class="thumb" onclick="openModal(['img/frontis.png', 'img/maps.png', 'img/zoom.png'], 1)">
+                    </div>
+                    <div class="foto-contenedor" style="width: 150px; height: 110px; cursor: pointer; border: 1px solid #333; overflow: hidden; border-radius: 2px;">
+                        <img src="img/zoom.png" alt="Detalle Zoom" class="thumb" onclick="openModal(['img/frontis.png', 'img/maps.png', 'img/zoom.png'], 2)">
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #888; font-style: italic;">Para mayor información escribe a WhatsApp y/o correo. Estaremos felices de ayudarte.</p>
+                
+                <div style="display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap;">
+                    <a href="https://wa.me/56982559972?text=Buen%20día.%20Me%20interesa%20el%20terreno%20de%20Samuel%20Valencia%20en%20Quilpué." target="_blank" class="contact-btn" style="flex: 1; min-width: 200px; margin: 0;">WhatsApp</a>
+                    <a href="mailto:gmoraloper@gmail.com" class="contact-btn email-btn" style="flex: 1; min-width: 200px; margin: 0;">Enviar Correo</a>
+                </div>
+            </div>
+        </div>
     </main>
 
     <div id="myModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="imgFull">
-        
         <a class="prev" onclick="changeImage(-1)">&#10094;</a>
         <a class="next" onclick="changeImage(1)">&#10095;</a>
     </div>
@@ -59,11 +92,11 @@
     </footer>
 
     <script>
-        // Lista de imágenes de la galería (ASEGÚRATE QUE ESTÉN AQUÍ)
-        const images = ["img/mapa.png", "img/esquina.png"];
+        let currentImages = [];
         let currentImageIndex = 0;
 
-        function openModal(index) {
+        function openModal(imageArray, index) {
+            currentImages = imageArray;
             currentImageIndex = index;
             document.getElementById("myModal").style.display = "flex";
             updateModalImage();
@@ -75,29 +108,20 @@
 
         function changeImage(direction) {
             currentImageIndex += direction;
-            
-            // Navegación cíclica
-            if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            }
-            if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
-            }
-            
+            if (currentImageIndex >= currentImages.length) currentImageIndex = 0;
+            if (currentImageIndex < 0) currentImageIndex = currentImages.length - 1;
             updateModalImage();
         }
 
         function updateModalImage() {
-            // Animación suave de cambio de imagen
             const modalImg = document.getElementById("imgFull");
             modalImg.style.opacity = 0;
             setTimeout(() => {
-                modalImg.src = images[currentImageIndex];
+                modalImg.src = currentImages[currentImageIndex];
                 modalImg.style.opacity = 1;
             }, 100);
         }
 
-        // Cerrar al hacer clic fuera de la imagen (en el fondo oscuro)
         window.onclick = function(event) {
             if (event.target === document.getElementById("myModal")) {
                 closeModal();
